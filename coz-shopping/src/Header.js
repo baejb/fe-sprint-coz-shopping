@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState ,useEffect,useRef} from 'react';
 
 const HeaderDiv = styled.div`
     width:1280px;
@@ -58,6 +58,7 @@ const DropdownDiv = styled.div`
 
 `
 const DropdownUl = styled.ul`
+
     width: 200px;
     height: 150px;
    background-color: white;
@@ -94,9 +95,25 @@ const StyledLink = styled(Link)`
     color: black;
 `
 
+
+
 function Header(){
     const [isActive, setActive] = useState(false);
-     
+    const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setActive(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
     function clickBtn(){
         setActive(!isActive);
     }
@@ -114,7 +131,8 @@ function Header(){
             <HamburgerDiv>
                 <Hamburger src="../hamburger.png" onClick={clickBtn}/>
                 {isActive === true ? 
-                    <DropdownDiv>
+               
+                    <DropdownDiv ref={dropdownRef}>
                     <DropdownUl>
                         <DropdownList>
                          <DropdownListIconDiv>
@@ -140,6 +158,7 @@ function Header(){
                             
                     </DropdownUl>
                 </DropdownDiv>
+                
                 : undefined}
               
             </HamburgerDiv>
