@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // 미완성 : 로고 클릭 시 메인페이지로 리다이렉트 
 // 드롭다운 기능 : 페이지 이동 , 클릭시 드롭다운 열리기 
@@ -48,14 +49,20 @@ const DropdownDiv = styled.div`
     position: absolute;
     left: 80%;
     right: 0%;
-    top: 50%;
+    top: 70%;
     bottom: 0%;
+    border-radius: 12px;
+    background-color: white;
     /* display: none; */
 
 `
 const DropdownUl = styled.ul`
+    width: 200px;
+    height: 150px;
    background-color: white;
-    
+   padding-left: 0;
+   margin: 0;
+   border-radius: 12px;
 `
 const DropdownList = styled.li`
     font-size: 16px;
@@ -65,12 +72,27 @@ const DropdownList = styled.li`
     height: 50px;
     line-height: 50px;
     
+    
+    
+`
+const DropdownListIconDiv = styled.div`
+    line-height: 50px;
+    margin-left: 30px;
+    
 `
 const DropdownListIcon = styled.img`
     width: 20px;
     height: 20px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    margin-right: 8px;
         
 `
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+`
+
 function Header(){
     return (
         
@@ -83,9 +105,30 @@ function Header(){
                 <Hamburger src="../hamburger.png"/>
                 <DropdownDiv>
                     <DropdownUl>
-                        <DropdownList>OOO님, 안녕하세요 </DropdownList>
-                        <DropdownList><DropdownListIcon src="../goods.png" />상품리스트 페이지</DropdownList>
-                        <DropdownList><DropdownListIcon src="../bookmark.png"/>북마크 페이지</DropdownList>
+                        <DropdownList>
+                         <DropdownListIconDiv>
+                            OOO님, 안녕하세요
+                         </DropdownListIconDiv>    
+                        </DropdownList>
+                        <DropdownList>
+                            <StyledLink to='/products/list' >
+                            <DropdownListIconDiv>
+                            <DropdownListIcon src="../goods.png" />
+                            상품리스트 페이지
+                            </DropdownListIconDiv>
+                           
+                            
+                            </StyledLink>
+                        </DropdownList>
+                        <DropdownList>
+                            <StyledLink to='/bookmark'>
+                            <DropdownListIconDiv>
+                            <DropdownListIcon src="../bookmark.png"/>
+                            북마크 페이지
+                            </DropdownListIconDiv>
+                            </StyledLink>
+                            </DropdownList>
+                            
                     </DropdownUl>
                 </DropdownDiv>
             </HamburgerDiv>
