@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
-// 미완성 : 로고 클릭 시 메인페이지로 리다이렉트 
-// 드롭다운 기능 : 페이지 이동 , 클릭시 드롭다운 열리기 
-// 드롭다운 아이콘 box로 만들기 
+import { useState } from 'react';
 
 const HeaderDiv = styled.div`
     width:1280px;
@@ -38,6 +35,9 @@ const LogoTitle = styled.p`
 `
 const HamburgerDiv = styled.div`
     margin-right: 78px;
+    &:hover{ 
+        cursor: pointer;
+    } 
 `
 const Hamburger = styled.img`
     width: 30px;
@@ -53,7 +53,8 @@ const DropdownDiv = styled.div`
     bottom: 0%;
     border-radius: 12px;
     background-color: white;
-    /* display: none; */
+    box-shadow: 0px 8px 8px 0px  #0000001A;
+    
 
 `
 const DropdownUl = styled.ul`
@@ -94,16 +95,26 @@ const StyledLink = styled(Link)`
 `
 
 function Header(){
+    const [isActive, setActive] = useState(false);
+     
+    function clickBtn(){
+        setActive(!isActive);
+    }
     return (
         
         <HeaderDiv>
             <LogoTitleDiv>
+                <StyledLink to='/'>
                 <LogoImg src="../logo.png" alt="로고" />
+                </StyledLink>
+                <StyledLink to='/'>
                 <LogoTitle>COZ Shopping</LogoTitle>
+                </StyledLink>
             </LogoTitleDiv>
             <HamburgerDiv>
-                <Hamburger src="../hamburger.png"/>
-                <DropdownDiv>
+                <Hamburger src="../hamburger.png" onClick={clickBtn}/>
+                {isActive === true ? 
+                    <DropdownDiv>
                     <DropdownUl>
                         <DropdownList>
                          <DropdownListIconDiv>
@@ -115,9 +126,7 @@ function Header(){
                             <DropdownListIconDiv>
                             <DropdownListIcon src="../goods.png" />
                             상품리스트 페이지
-                            </DropdownListIconDiv>
-                           
-                            
+                            </DropdownListIconDiv>        
                             </StyledLink>
                         </DropdownList>
                         <DropdownList>
@@ -131,6 +140,8 @@ function Header(){
                             
                     </DropdownUl>
                 </DropdownDiv>
+                : undefined}
+              
             </HamburgerDiv>
         </HeaderDiv>
        
