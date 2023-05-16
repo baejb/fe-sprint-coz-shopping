@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState ,useEffect,useRef} from 'react';
 
 const HeaderDiv = styled.div`
-    width:1280px;
+    width:100vw;
     height: 80px;
     box-shadow: 0px 8px 8px 0px  #0000001A;
     position: sticky;
@@ -129,7 +129,7 @@ function Header(){
                 </StyledLink>
             </LogoTitleDiv>
             <HamburgerDiv>
-                <Hamburger src="../hamburger.png" onClick={clickBtn}/>
+                <Hamburger src="../hamburger.png" alt="드롭다운 메뉴" onClick={clickBtn}/>
                 {isActive === true ? 
                
                     <DropdownDiv ref={dropdownRef}>
@@ -142,7 +142,7 @@ function Header(){
                         <DropdownList>
                             <StyledLink to='/products/list' >
                             <DropdownListIconDiv>
-                            <DropdownListIcon src="../goods.png" />
+                            <DropdownListIcon src="../goods.png" alt="선물모양 아이콘"/>
                             상품리스트 페이지
                             </DropdownListIconDiv>        
                             </StyledLink>
@@ -150,7 +150,7 @@ function Header(){
                         <DropdownList>
                             <StyledLink to='/bookmark'>
                             <DropdownListIconDiv>
-                            <DropdownListIcon src="../bookmark.png"/>
+                            <DropdownListIcon src="../bookmark.png" alt="북마크 아이콘"/>
                             북마크 페이지
                             </DropdownListIconDiv>
                             </StyledLink>
