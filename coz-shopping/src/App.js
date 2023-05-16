@@ -1,14 +1,18 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import TypeComponent from './TypeComponent';
+import { initData } from './dummy';
 
 function App() {
-  const [datas , setdatas] = useState([]);
+  const [data, setdata] = useState([]);
+  const [ex , setex] = useState(initData)
+    
 
   const getDatas = async () => {
-    await fetch("http://cozshopping.codestates-seb.link/api/v1/products")
+    let query ='';
+    await fetch(`http://cozshopping.codestates-seb.link/api/v1/products?${query}`)
     .then((res)=> res.json())
-    .then((data)=> setdatas(data))
+    .then((data)=> setdata(data))
   }
 
   useEffect(() => {
@@ -17,7 +21,8 @@ function App() {
 
   return (
     <div className="App">
-     <TypeComponent datas={datas}></TypeComponent>
+     <TypeComponent data={data} ex={ex}></TypeComponent>
+    
     </div>
   );
 }

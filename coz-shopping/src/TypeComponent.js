@@ -1,29 +1,13 @@
 import React from 'react';
 import { useState , useEffect} from 'react';
 import styled from "styled-components";
-//state는 비동기적이어서 datas가 읽히기 전에
-function TypeComponent({datas}){
 
-const type = {
-    Product : "상품 이름"
-    
-}
-const [current, setCurrent] = useState({
-    id: 51,
-    type: "Product",
-    title: "나이키 조거 팬츠",
-    sub_title: null,
-    brand_name: null,
-    price: "64500",
-    discountPercentage: 40,
-    image_url: "https://images.unsplash.com/photo-1580906853203-f493cea9ff28?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    brand_image_url: null,
-    follower: null
 
-});
 
-const ProductBookmarkDiv = styled.div`
 
+const ProductDiv = styled.div`
+    display:flex;
+    justify-content: space-between;
 `
 const Product = styled.div`
     width : 264px;
@@ -33,6 +17,7 @@ const Product = styled.div`
     background-image: url(${(props)=> props.urls }) ;
     
 `
+
 const BookmarkIcon = styled.img`
     width: 24px;
     height: 24px;
@@ -41,26 +26,126 @@ const BookmarkIcon = styled.img`
     top:80%;
     left:80%;
 `
-const TypeName = styled.p`
+const TypeName = styled.div`
     font-size: 16px;
+    font-weight: 800;
+    
+`
+const ExhibitionExplain = styled.div`
+    font-size:16px;
+    text-align: left;
+`
+const RightText = styled.div`
+    text-align: right;
+    font-weight: 700;
+    color: ${(props)=> props.color? "rgba(69, 44, 221, 1)":"black"};
 `
 
+const SmallRightText = styled.div`
+    text-align: right;
+`
+
+const FlexContainer = styled.div`
+    display: flex;
+    width: 270px;
+
+    
+`
+function TypeComponent({ data ,ex }){
+const {
+        id,
+        type,
+        title,
+        sub_title,
+        brand_name,
+        price,
+        discountPercentage,
+        image_url,
+        brand_image_url,
+        follower,
+     } = ex; 
+// 일단 코드 오류 나니 더미데이터로 선언해줌 
+   
+   let explain ;
+    switch (type){
+        case 'Product':
+            explain = (
+            <div>
+            <Product urls={image_url}>
+                <BookmarkIcon src="../bookmarkiconoff.png"/>
+            </Product>
+            <ProductDiv>
+            <TypeName>{title}</TypeName>
+            <RightText color>{discountPercentage}%</RightText>
+            </ProductDiv>
+            <SmallRightText>{price}</SmallRightText>
+            </div>
+            )
+            break;
+    
+        case 'Category' :
+            explain = (
+                <div>
+            <Product urls={image_url}>
+                 <BookmarkIcon src="../bookmarkiconoff.png"/>
+            </Product>
+            <TypeName>#{title}</TypeName>
+            </div>
+            )
+            
+            break;
+        case 'Exhibition' :
+            explain = (
+                <div>
+            <Product urls={image_url}>
+                 <BookmarkIcon src="../bookmarkiconoff.png"/>
+            </Product>
+            <TypeName>{title}</TypeName>
+            <ExhibitionExplain>{sub_title}</ExhibitionExplain>
+            </div>
+            )
+              
+            break;
+        case 'Brand' :
+            explain = (
+                <div>
+            <Product urls={brand_image_url}>
+                <BookmarkIcon src="../bookmarkiconoff.png"/>
+            </Product>
+            <ProductDiv>
+             <TypeName>{brand_name}</TypeName>
+             <RightText>관심 고객수</RightText>
+             </ProductDiv>
+             <SmallRightText>{follower}</SmallRightText>
+            
+             </div>
+             )
+             break;      
+        default: 
+            explain = null ;        
+                
+        break;
+
+        }
     return(
-        <div>
-            {/* {datas.map((data)=>{
-
-           return(
-            <Product urls={data.image_url} >
-                <BookmarkIcon/>
-            </Product> 
-           )
-        })} */}
-        <Product urls ={current.image_url}>
-            <BookmarkIcon src="../bookmarkiconoff.png"/> 
-        </Product>
         
-
+        <div>
+           <FlexContainer>
+           
+           {explain}
+           </FlexContainer>
+          
+            
         </div>
+        
     )
+   
+  }
 
-}export default TypeComponent;
+  export default TypeComponent;
+  
+  
+  
+  
+  
+  
