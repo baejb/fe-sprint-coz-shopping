@@ -63,16 +63,33 @@ const {
         image_url,
         brand_image_url,
         follower,
-     } = ex; 
+     } = data; 
 // 일단 코드 오류 나니 더미데이터로 선언해줌 
-   
+const [bookmark, setbookmark] = useState(false)
+
+function objString(obj) {
+    return JSON.stringify(obj);
+}
+function onClickbookmark(){
+    setbookmark(!bookmark);
+    if(bookmark === false){ // bookmark를 바로 변경해주는 것이 아니기 때문에 false 일때 즉 true가 될 상황 
+        let strToobj = objString(data);
+        window.localStorage.setItem(`${id}`, strToobj);
+        
+    }
+    if(bookmark === true){
+        window.localStorage.removeItem(`${id}`);
+       
+    }
+}
+
    let explain ;
     switch (type){
         case 'Product':
             explain = (
             <div>
             <Product urls={image_url}>
-                <BookmarkIcon src="../bookmarkiconoff.png"/>
+                <BookmarkIcon onClick={onClickbookmark} src={bookmark? "../bookmarkiconon.png":"../bookmarkiconoff.png"}/>
             </Product>
             <ProductDiv>
             <TypeName>{title}</TypeName>
@@ -87,8 +104,7 @@ const {
             explain = (
                 <div>
             <Product urls={image_url}>
-                 <BookmarkIcon src="../bookmarkiconoff.png"/>
-            </Product>
+            <BookmarkIcon onClick={onClickbookmark} src={bookmark? "../bookmarkiconon.png":"../bookmarkiconoff.png"}/>            </Product>
             <TypeName>#{title}</TypeName>
             </div>
             )
@@ -98,8 +114,7 @@ const {
             explain = (
                 <div>
             <Product urls={image_url}>
-                 <BookmarkIcon src="../bookmarkiconoff.png"/>
-            </Product>
+            <BookmarkIcon onClick={onClickbookmark} src={bookmark? "../bookmarkiconon.png":"../bookmarkiconoff.png"}/>            </Product>
             <TypeName>{title}</TypeName>
             <ExhibitionExplain>{sub_title}</ExhibitionExplain>
             </div>
@@ -110,8 +125,7 @@ const {
             explain = (
                 <div>
             <Product urls={brand_image_url}>
-                <BookmarkIcon src="../bookmarkiconoff.png"/>
-            </Product>
+            <BookmarkIcon onClick={onClickbookmark} src={bookmark? "../bookmarkiconon.png":"../bookmarkiconoff.png"}/>            </Product>
             <ProductDiv>
              <TypeName>{brand_name}</TypeName>
              <RightText>관심 고객수</RightText>
@@ -135,7 +149,7 @@ const {
            {explain}
            </FlexContainer>
           
-            
+            {console.log(bookmark)}
         </div>
         
     )
