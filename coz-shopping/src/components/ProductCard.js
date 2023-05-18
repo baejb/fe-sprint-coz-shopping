@@ -141,16 +141,9 @@ function onClickbookmark(){
 
         }
     return(
-        
-        <div>
-           <FlexContainer>
-           
+           <FlexContainer>  
            {explain}
            </FlexContainer>
-          
-            {console.log(bookmark)}
-        </div>
-        
     )
    
   }
