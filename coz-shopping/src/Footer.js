@@ -2,7 +2,7 @@ import React from "react";
 import styled  from "styled-components";
 
 const FooterDiv = styled.div`
-    width:1280px;
+    width:100vw;
     height: 58px;
     text-align: center;
 `

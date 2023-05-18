@@ -6,7 +6,7 @@ import BookMarkPage from './pages/BookMarkPage';
 import { useEffect, useState } from 'react';
 import TypeComponent from './components/ProductCard';
 import Header from './Header';
-
+import Footer from './Footer';
 function App() {
   const [productData, setProductData] = useState([]);
   const [query, setQuery] = useState([]);
@@ -36,7 +36,7 @@ function App() {
       </Routes>
      </Router>
      
-
+    <Footer/>
     </div>
   );
 }
