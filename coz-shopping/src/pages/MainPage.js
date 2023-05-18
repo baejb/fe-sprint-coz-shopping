@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import TypeComponent from "../TypeComponent";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 const MainPageContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -17,7 +17,10 @@ const TitlePage = styled.div`
     font-weight: 600;
     margin: 4% 0% 1% 10%; // 위 오 아래 왼 
 `
-
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+`
 
 function MainPage ({data , setQuery}) {
    // Assuming you want to update the query parameter when a button is clicked
@@ -30,7 +33,9 @@ function MainPage ({data , setQuery}) {
 
     return(
         <div>
-        <TitlePage>상품페이지 </TitlePage>
+            <StyledLink to="/products/list">
+        <TitlePage >상품페이지 </TitlePage>
+        </StyledLink>
         <MainPageContainer>
     {fourData.map((idx) => {
     return(
