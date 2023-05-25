@@ -16,7 +16,7 @@
         <li>마지막으로 북마크페이지는 상품 중 북마크 표시된 상품 리스트를 보여줍니다. 이 페이지 또한 필터기능도 존재합니다. </li>
     <br>
     </ul>
-    <p>![Main Page](https://github.com/baejb/fe-sprint-coz-shopping/assets/82064490/7304c16d-50f1-43e4-9594-dee54ad48b74)
+    <p>
 
     상품리스트에 대한 데이터는 api 호출을 통해 총 100개의 데이터를 받아왔고 type별로 비교하여 필터 기능을 만들었습니다. 북마크 리스트는 localStorage를 활용하여 북마크 기능을 만들었습니다. 
     <br>
