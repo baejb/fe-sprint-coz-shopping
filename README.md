@@ -13,7 +13,7 @@
      <li>
             첫번째로 메인페이지에는 상품리스트와 북마크 리스트 목록을 보여줍니다. 상품의 개수는 4개로 제한하여 보여줄 수 있도록 구현하였습니다.  
         </li>
-        <img src="[https부터 jpg까지 주소 붙여놓기](https://github.com/baejb/fe-sprint-coz-shopping/assets/82064490/fb291121-d2ff-4ff3-93d0-ae6abb708763)" width="100" height="200"/>
+        <img src="https://github.com/baejb/fe-sprint-coz-shopping/assets/82064490/fb291121-d2ff-4ff3-93d0-ae6abb708763" width="100" height="200"/>
           
         <br>
     <li>두번째로 상품리스트페이지는 상단에 5가지의 필터 버튼을 구현하여 카테고리 별 상품의 목록을 확인할 수 있도록 구현하였습니다. </li><br>
