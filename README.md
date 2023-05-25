@@ -10,18 +10,15 @@
     <strong>Coz-Shopping</strong>은 총 3가지 페이지로 구성되어있습니다. <br>
     공통적으로 모든 페이지에는 헤더와 푸터가 존재하며 , 헤더에서 로고를 클릭 시 메인페이지로 이동하고 오른쪽의 햄버거 버튼을 클릭시 드롭다운창을 통해 각각의 페이지로 이동할 수 있습니다. 또한 헤더는 항상 상단에 고정되어 있게 구현하였습니다. <br>
     
- 첫번째로 메인페이지에는 상품리스트와 북마크 리스트 목록을 보여줍니다. 상품의 개수는 4개로 제한하여 보여줄 수 있도록 구현하였습니다.  
+ <div>첫번째로 메인페이지에는 상품리스트와 북마크 리스트 목록을 보여줍니다. 상품의 개수는 4개로 제한하여 보여줄 수 있도록 구현하였습니다.  
  <img src="https://github.com/baejb/fe-sprint-coz-shopping/assets/82064490/fb291121-d2ff-4ff3-93d0-ae6abb708763" width="700" height="500"/>
-         
-     
-    두번째로 상품리스트페이지는 상단에 5가지의 필터 버튼을 구현하여 카테고리 별 상품의 목록을 확인할 수 있도록 구현하였습니다. 
-        <img src="https://github.com/baejb/fe-sprint-coz-shopping/assets/82064490/0b7f623c-8107-47c1-9416-2ee7a3e89e44" width="700" height="500"/>
-        
-
-        <br>
-        마지막으로 북마크페이지는 상품 중 북마크 표시된 상품 리스트를 보여줍니다. 이 페이지 또한 필터기능도 존재합니다. 
-        <img src="https://github.com/baejb/fe-sprint-coz-shopping/assets/82064490/18f0c1fe-fc83-409a-bb92-773750157c91" width="700" height="500"/>
-    <br>
+</div>   
+<div> 두번째로 상품리스트페이지는 상단에 5가지의 필터 버튼을 구현하여 카테고리 별 상품의 목록을 확인할 수 있도록 구현하였습니다. 
+<img src="https://github.com/baejb/fe-sprint-coz-shopping/assets/82064490/0b7f623c-8107-47c1-9416-2ee7a3e89e44" width="700" height="500"/>
+</div>      
+<div>마지막으로 북마크페이지는 상품 중 북마크 표시된 상품 리스트를 보여줍니다. 이 페이지 또한 필터기능도 존재합니다. 
+<img src="https://github.com/baejb/fe-sprint-coz-shopping/assets/82064490/18f0c1fe-fc83-409a-bb92-773750157c91" width="700" height="500"/>
+</div>
    
    
 
