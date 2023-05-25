@@ -17,7 +17,7 @@
     아쉽게도 5일내에 모달창 기능과 무한스크롤 기능 북마크 리스트 보여주기 기능은 만들지 못했고 추후 계속해서 만들어갈 예정입니다. 
 </p>
 <h3>사용 기술</h3>
-<p>(https://img.shields.io/badge/react-444444?style=for-the-badge&logo=react)</p>
+<p>https://img.shields.io/badge/react-444444?style=for-the-badge&logo=react</p>
 
 <h3>프로젝트 설치 및 실행방법</h3>
 <p>프로젝트 clone -> npm install -> npm run start </p>
