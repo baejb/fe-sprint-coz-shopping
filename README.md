@@ -19,10 +19,7 @@
 </p>
 <hr>
 <h3>사용 기술</h3>
-![React](https://img.shields.io/badge/react-ffffff?style=for-the-badge&logo=react&logoColor=green)
-![React](https://img.shields.io/badge/react-ffffff?style=for-the-badge&logo=react)
-![React](https://img.shields.io/badge/react-444444?style=for-the-badge&logo=react)
-![React](https://img.shields.io/badge/react?style=for-the-badge&logo=react)
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
 <hr>
 <h3>프로젝트 설치 및 실행방법</h3>
 <p>프로젝트 clone -> npm install -> npm run start </p>
