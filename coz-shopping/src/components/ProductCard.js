@@ -48,7 +48,8 @@ const SmallRightText = styled.div`
 const FlexContainer = styled.div`
     display: flex;
     width: 270px;
-    margin-right:5%;
+    margin-right:1%;
+    margin-bottom: 4%;
    
 
     
