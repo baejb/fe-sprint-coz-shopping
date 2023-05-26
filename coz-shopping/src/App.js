@@ -4,7 +4,7 @@ import MainPage from "./pages/MainPage"
 import ProductsListPage from './pages/ProductsListPage';
 import BookMarkPage from './pages/BookMarkPage';
 import { useEffect, useState } from 'react';
-import TypeComponent from './components/ProductCard';
+
 import Header from './Header';
 import Footer from './Footer';
 function App() {
@@ -35,7 +35,7 @@ function App() {
       <Header/>
       <Routes>
         <Route path='/' element={<MainPage data={productData} setQuery={setQuery}/>}/>
-        <Route path='/products/list' element= {<ProductsListPage/>}/>
+        <Route path='/products/list' element= {<ProductsListPage data={productData} />} />
         <Route path='/bookmark' element= {<BookMarkPage/>} />
       </Routes>
      </Router>
