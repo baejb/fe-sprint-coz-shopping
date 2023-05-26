@@ -12,6 +12,8 @@ function App() {
   const [query, setQuery] = useState([]);
     
 
+  
+
   const getDatas = async () => {
     let query ='';
     await fetch(`http://cozshopping.codestates-seb.link/api/v1/products?${query}`)
@@ -21,7 +23,9 @@ function App() {
 
   useEffect(() => {
     getDatas();
-  },[])
+  }, [query]);
+
+
 
   return (
     <div className="App">

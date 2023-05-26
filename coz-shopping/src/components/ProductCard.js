@@ -15,6 +15,7 @@ const Product = styled.div`
     background-size: cover;
     background-image: url(${(props)=> props.urls }) ;
     
+
 `
 
 const BookmarkIcon = styled.img`
@@ -47,10 +48,13 @@ const SmallRightText = styled.div`
 const FlexContainer = styled.div`
     display: flex;
     width: 270px;
+    margin-right:5%;
+   
 
     
 `
-function TypeComponent({ data ,ex }){
+
+function ProductCard({ data }){
 const {
         id,
         type,
@@ -148,7 +152,7 @@ function onClickbookmark(){
    
   }
 
-  export default TypeComponent;
+  export default ProductCard;
   
   
   
