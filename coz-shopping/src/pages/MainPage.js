@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import TypeComponent from "../TypeComponent";
+import ProductCard from "../components/ProductCard";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 const MainPageContainer = styled.div`
@@ -23,8 +23,7 @@ const StyledLink = styled(Link)`
 `
 
 function MainPage ({data , setQuery}) {
-   // Assuming you want to update the query parameter when a button is clicked
-
+  
     useEffect(() => {
       setQuery('count=4'); // 컴포넌트가 마운트될 때 쿼리를 설정하는 함수 호출
     }, [setQuery]); 
@@ -39,7 +38,7 @@ function MainPage ({data , setQuery}) {
         <MainPageContainer>
     {fourData.map((idx) => {
     return(
-        <TypeComponent data={idx}/>
+        <ProductCard data={idx}/>
     )}
  
     )}

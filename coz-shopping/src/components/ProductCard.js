@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState , useEffect} from 'react';
 import styled from "styled-components";
 
@@ -16,7 +15,7 @@ const Product = styled.div`
     background-size: cover;
     background-image: url(${(props)=> props.urls }) ;
     
-    
+
 `
 
 const BookmarkIcon = styled.img`
@@ -55,7 +54,7 @@ const FlexContainer = styled.div`
     
 `
 
-function TypeComponent({ data }){
+function ProductCard({ data }){
 const {
         id,
         type,
@@ -69,13 +68,13 @@ const {
         follower,
      } = data; 
 // 일단 코드 오류 나니 더미데이터로 선언해줌 
-const [bookmark, setbookmark] = useState(false)
+const [bookmark, setBookmark] = useState(false)
 
 function objString(obj) {
     return JSON.stringify(obj);
 }
 function onClickbookmark(){
-    setbookmark(!bookmark);
+    setBookmark(!bookmark);
     if(bookmark === false){ // bookmark를 바로 변경해주는 것이 아니기 때문에 false 일때 즉 true가 될 상황 
         let strToobj = objString(data);
         window.localStorage.setItem(`${id}`, strToobj);
@@ -146,20 +145,14 @@ function onClickbookmark(){
 
         }
     return(
-        
-        <div>
-           <FlexContainer>
+           <FlexContainer>  
            {explain}
            </FlexContainer>
-          
-            {console.log(bookmark)}
-        </div>
-        
     )
    
   }
 
-  export default TypeComponent;
+  export default ProductCard;
   
   
   
