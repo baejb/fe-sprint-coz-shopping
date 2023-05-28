@@ -1,50 +1,92 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 const MainPageContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 80vw;
-    flex-wrap: wrap; 
-    margin:auto;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  width: 80vw;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: space-between;
+`;
 
-`
 const TitlePage = styled.div`
-    font-size:24px;
-    font-weight: 600;
-    margin: 4% 0% 1% 10%; // 위 오 아래 왼 
-`
+  font-size: 24px;
+  font-weight: 600;
+  margin: 4% 0% 1% 10%;
+`;
+
 const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: black;
-`
+  text-decoration: none;
+  color: black;
+`;
 
-function MainPage ({data , setQuery}) {
-  
-    useEffect(() => {
-      setQuery('count=4'); // 컴포넌트가 마운트될 때 쿼리를 설정하는 함수 호출
-    }, [setQuery]); 
-  
-    const fourData = data.slice(0, 4);
+function MainPage({ data, setQuery }) {
+  const [bookmarkedItems, setBookmarkedItems] = useState([]);
 
-    return(
-        <div>
-            <StyledLink to="/products/list">
-        <TitlePage >상품페이지 </TitlePage>
-        </StyledLink>
-        <MainPageContainer>
-    {fourData.map((idx) => {
-    return(
-        <ProductCard data={idx}/>
-    )}
- 
-    )}
-    </MainPageContainer>
+  useEffect(() => {
+    setQuery("count=4");
+  }, [setQuery]);
+
+  useEffect(() => {
+    const storedBookmarks = localStorage.getItem("bookmarkedItems");
+    if (storedBookmarks) {
+      setBookmarkedItems(JSON.parse(storedBookmarks));
+    }
+  }, []);
+
+  const toggleBookmark = (item) => {
+    const index = bookmarkedItems.findIndex((bookmark) => bookmark.id === item.id);
+    if (index !== -1) {
+      const updatedBookmarks = [...bookmarkedItems];
+      updatedBookmarks.splice(index, 1);
+      setBookmarkedItems(updatedBookmarks);
+    } else {
+      const updatedBookmarks = [...bookmarkedItems, item];
+      setBookmarkedItems(updatedBookmarks);
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("bookmarkedItems", JSON.stringify(bookmarkedItems));
+  }, [bookmarkedItems]);
+
+  const fourData = data.slice(0, 4);
+  
+  return (
+    <div>
+      <StyledLink to="/products/list">
+        <TitlePage>상품페이지</TitlePage>
+      </StyledLink>
+      <MainPageContainer>
+        {fourData.map((item) => (
+          <ProductCard
+            key={item.id}
+            data={item}
+            bookmarkedItems={bookmarkedItems}
+            toggleBookmark={toggleBookmark}
+          />
+        ))}
+      </MainPageContainer>
+
+      <StyledLink to="/bookmark">
+  <TitlePage>북마크 페이지</TitlePage>
+</StyledLink>
+<MainPageContainer>
+  {bookmarkedItems.map((item) => (
+    <ProductCard
+      key={item.id}
+      data={item}
+      bookmarkedItems={bookmarkedItems}
+      toggleBookmark={toggleBookmark}
+    />
+  ))}
+</MainPageContainer>
+
     </div>
-    )  
-  
+  );
+}
 
-}export default MainPage;
+export default MainPage;
