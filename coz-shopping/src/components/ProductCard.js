@@ -1,6 +1,6 @@
 import { useState , useEffect} from 'react';
 import styled from "styled-components";
-
+import Bookmark from './Bookmark';
 
 
 
@@ -18,14 +18,6 @@ const Product = styled.div`
 
 `
 
-const BookmarkIcon = styled.img`
-    width: 24px;
-    height: 24px;
-    z-index: 1;
-    position : relative;
-    top:80%;
-    left:80%;
-`
 const TypeName = styled.div`
     font-size: 16px;
     font-weight: 800;
@@ -68,24 +60,7 @@ const {
         brand_image_url,
         follower,
      } = data; 
-// 일단 코드 오류 나니 더미데이터로 선언해줌 
-const [bookmark, setBookmark] = useState(false)
 
-function objString(obj) {
-    return JSON.stringify(obj);
-}
-function onClickbookmark(){
-    setBookmark(!bookmark);
-    if(bookmark === false){ // bookmark를 바로 변경해주는 것이 아니기 때문에 false 일때 즉 true가 될 상황 
-        let strToobj = objString(data);
-        window.localStorage.setItem(`${id}`, strToobj);
-        
-    }
-    if(bookmark === true){
-        window.localStorage.removeItem(`${id}`);
-       
-    }
-}
 
    let explain ;
     switch (type){
@@ -93,7 +68,7 @@ function onClickbookmark(){
             explain = (
             <div>
             <Product urls={image_url}>
-                <BookmarkIcon onClick={onClickbookmark} src={bookmark? "../bookmarkiconon.png":"../bookmarkiconoff.png"}/>
+                <Bookmark data={data}></Bookmark>
             </Product>
             <ProductDiv>
             <TypeName>{title}</TypeName>
@@ -108,7 +83,8 @@ function onClickbookmark(){
             explain = (
                 <div>
             <Product urls={image_url}>
-            <BookmarkIcon onClick={onClickbookmark} src={bookmark? "../bookmarkiconon.png":"../bookmarkiconoff.png"}/>            </Product>
+            <Bookmark data={data}></Bookmark>
+                       </Product>
             <TypeName>#{title}</TypeName>
             </div>
             )
@@ -118,7 +94,8 @@ function onClickbookmark(){
             explain = (
                 <div>
             <Product urls={image_url}>
-            <BookmarkIcon onClick={onClickbookmark} src={bookmark? "../bookmarkiconon.png":"../bookmarkiconoff.png"}/>            </Product>
+            <Bookmark data={data}></Bookmark>
+                       </Product>
             <TypeName>{title}</TypeName>
             <ExhibitionExplain>{sub_title}</ExhibitionExplain>
             </div>
@@ -129,7 +106,8 @@ function onClickbookmark(){
             explain = (
                 <div>
             <Product urls={brand_image_url}>
-            <BookmarkIcon onClick={onClickbookmark} src={bookmark? "../bookmarkiconon.png":"../bookmarkiconoff.png"}/>            </Product>
+            <Bookmark data={data}></Bookmark>
+                       </Product>
             <ProductDiv>
              <TypeName>{brand_name}</TypeName>
              <RightText>관심 고객수</RightText>
