@@ -10,8 +10,19 @@ import Footer from './Footer';
 function App() {
   const [productData, setProductData] = useState([]);
   const [query, setQuery] = useState([]);
-    
+  const [bookmarkedItems, setBookmarkedItems] = useState([]);
 
+  const toggleBookmark = (item) => {
+    const index = bookmarkedItems.findIndex((bookmark) => bookmark.id === item.id);
+    if (index !== -1) {
+      const updatedBookmarks = [...bookmarkedItems];
+      updatedBookmarks.splice(index, 1);
+      setBookmarkedItems(updatedBookmarks);
+    } else {
+      const updatedBookmarks = [...bookmarkedItems, item];
+      setBookmarkedItems(updatedBookmarks);
+    }
+  };
   
 
   const getDatas = async () => {
@@ -34,9 +45,9 @@ function App() {
       <Router>
       <Header/>
       <Routes>
-        <Route path='/' element={<MainPage data={productData} setQuery={setQuery}/>}/>
-        <Route path='/products/list' element= {<ProductsListPage data={productData} />} />
-        <Route path='/bookmark' element= {<BookMarkPage/>} />
+        <Route path='/' element={<MainPage data={productData} setQuery={setQuery} bookmarkedItems={bookmarkedItems} setBookmarkedItems={setBookmarkedItems} toggleBookmark={toggleBookmark}/>}/>
+        <Route path='/products/list' element= {<ProductsListPage data={productData} bookmarkedItems={bookmarkedItems} setBookmarkedItems={setBookmarkedItems} toggleBookmark={toggleBookmark}/>} />
+        <Route path='/bookmark' element= {<BookMarkPage data={productData} bookmarkedItems={bookmarkedItems} setBookmarkedItems={setBookmarkedItems} toggleBookmark={toggleBookmark}/>} />
       </Routes>
      </Router>
      
