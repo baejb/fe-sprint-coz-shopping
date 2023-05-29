@@ -23,8 +23,8 @@ const StyledLink = styled(Link)`
   color: black;
 `;
 
-function MainPage({ data, setQuery }) {
-  const [bookmarkedItems, setBookmarkedItems] = useState([]);
+function MainPage({ data, setQuery, bookmarkedItems, setBookmarkedItems ,toggleBookmark}) {
+  // const [bookmarkedItems, setBookmarkedItems] = useState([]);
 
   useEffect(() => {
     setQuery("count=4");
@@ -37,24 +37,13 @@ function MainPage({ data, setQuery }) {
     }
   }, []);
 
-  const toggleBookmark = (item) => {
-    const index = bookmarkedItems.findIndex((bookmark) => bookmark.id === item.id);
-    if (index !== -1) {
-      const updatedBookmarks = [...bookmarkedItems];
-      updatedBookmarks.splice(index, 1);
-      setBookmarkedItems(updatedBookmarks);
-    } else {
-      const updatedBookmarks = [...bookmarkedItems, item];
-      setBookmarkedItems(updatedBookmarks);
-    }
-  };
 
   useEffect(() => {
     localStorage.setItem("bookmarkedItems", JSON.stringify(bookmarkedItems));
   }, [bookmarkedItems]);
 
   const fourData = data.slice(0, 4);
-  
+  const fourBookmarkData = bookmarkedItems.slice(0,4);
   return (
     <div>
       <StyledLink to="/products/list">
@@ -75,7 +64,7 @@ function MainPage({ data, setQuery }) {
   <TitlePage>북마크 페이지</TitlePage>
 </StyledLink>
 <MainPageContainer>
-  {bookmarkedItems.map((item) => (
+  {fourBookmarkData.map((item) => (
     <ProductCard
       key={item.id}
       data={item}
@@ -83,6 +72,7 @@ function MainPage({ data, setQuery }) {
       toggleBookmark={toggleBookmark}
     />
   ))}
+  
 </MainPageContainer>
 
     </div>

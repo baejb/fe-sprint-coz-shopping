@@ -42,10 +42,16 @@ const FilterTitle = styled.div`
   font-weight : ${(props) => (props.active ? "700" : "400" )};
 `;
 
-function ProductsListPage({ data }) {
+function ProductsListPage({ data, bookmarkedItems, setBookmarkedItems, toggleBookmark}) {
   const [filteredData, setFilteredData] = useState(data);
   const [activeFilter, setActiveFilter] = useState("All");
   
+  useEffect(() => {
+    const storedBookmarks = localStorage.getItem("bookmarkedItems");
+    if (storedBookmarks) {
+      setBookmarkedItems(JSON.parse(storedBookmarks));
+    }
+  }, []);
   const filterDataByType = (type) => {
     let filtered;
     if (type) {
@@ -56,7 +62,9 @@ function ProductsListPage({ data }) {
     setActiveFilter(type); 
     setFilteredData(filtered);
   };
-  
+  useEffect(() => {
+    localStorage.setItem("bookmarkedItems", JSON.stringify(bookmarkedItems));
+  }, [bookmarkedItems]);
 
   useEffect(() => {
     setFilteredData(data); // 컴포넌트가 처음 렌더링될 때 전체 카테고리 상품을 보여주기 위해 초기 데이터 설정
@@ -89,7 +97,7 @@ function ProductsListPage({ data }) {
       </MainDiv>
       <ProductDiv>
         {filteredData.map((item) => (
-          <ProductCard data={item} key={item.id} />
+          <ProductCard data={item} bookmarkedItems={bookmarkedItems} toggleBookmark={toggleBookmark} key={item.id} />
         ))}
       </ProductDiv>
     </>

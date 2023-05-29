@@ -4,7 +4,7 @@ import styled from "styled-components";
 const BookmarkIcon = styled.img`
   width: 24px;
   height: 24px;
-  z-index: 1;
+  /* z-index: 1; */
   position: relative;
   margin-top: 65%;
   left: 80%;
