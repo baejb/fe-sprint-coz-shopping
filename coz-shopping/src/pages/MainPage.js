@@ -23,12 +23,10 @@ const StyledLink = styled(Link)`
   color: black;
 `;
 
-function MainPage({ data, setQuery, bookmarkedItems, setBookmarkedItems ,toggleBookmark}) {
+function MainPage({ data, bookmarkedItems, setBookmarkedItems ,toggleBookmark}) {
   // const [bookmarkedItems, setBookmarkedItems] = useState([]);
 
-  useEffect(() => {
-    setQuery("count=4");
-  }, [setQuery]);
+ 
 
   useEffect(() => {
     const storedBookmarks = localStorage.getItem("bookmarkedItems");

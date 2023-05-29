@@ -26,8 +26,8 @@ function App() {
   
 
   const getDatas = async () => {
-    let query ='';
-    await fetch(`http://cozshopping.codestates-seb.link/api/v1/products?${query}`)
+  
+    await fetch(`http://cozshopping.codestates-seb.link/api/v1/products?`)
     .then((res)=> res.json())
     .then((data)=> setProductData(data))
   }
@@ -45,7 +45,7 @@ function App() {
       <Router>
       <Header/>
       <Routes>
-        <Route path='/' element={<MainPage data={productData} setQuery={setQuery} bookmarkedItems={bookmarkedItems} setBookmarkedItems={setBookmarkedItems} toggleBookmark={toggleBookmark}/>}/>
+        <Route path='/' element={<MainPage data={productData} bookmarkedItems={bookmarkedItems} setBookmarkedItems={setBookmarkedItems} toggleBookmark={toggleBookmark}/>}/>
         <Route path='/products/list' element= {<ProductsListPage data={productData} bookmarkedItems={bookmarkedItems} setBookmarkedItems={setBookmarkedItems} toggleBookmark={toggleBookmark}/>} />
         <Route path='/bookmark' element= {<BookMarkPage data={productData} bookmarkedItems={bookmarkedItems} setBookmarkedItems={setBookmarkedItems} toggleBookmark={toggleBookmark}/>} />
       </Routes>
